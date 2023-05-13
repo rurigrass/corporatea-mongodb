@@ -1,5 +1,3 @@
-"use client"
-
 // import Modal from "@/components/Modal";
 import Header from "@/components/layout/Header";
 import LoginModal from "@/components/modals/LoginModal";
@@ -12,7 +10,7 @@ export default function Home() {
         onClose={() => console.log("close")}
         onSubmit={() => console.log("submit")}
         actionLabel="Submit"
-        title="yoyo"
+        title="yoyo "
       /> */}
       <LoginModal/>
       <div className="">
