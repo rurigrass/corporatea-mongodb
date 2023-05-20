@@ -3,13 +3,13 @@ import { create } from "zustand";
 interface ILoginModalStore {
   isOpen: boolean;
   onOpen: () => void;
-  onClosed: () => void;
+  onClose: () => void;
 }
 
 const useLoginModal = create<ILoginModalStore>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
-  onClosed: () => set({ isOpen: false }),
+  onClose: () => set({ isOpen: false }),
 }));
 
 export default useLoginModal;
