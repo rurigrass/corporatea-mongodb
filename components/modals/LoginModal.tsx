@@ -49,6 +49,7 @@ const LoginModal = () => {
       actionLabel="Sign In"
       onClose={loginModal.onClose}
       onSubmit={onSubmit}
+      body={bodyContent}
     />
   );
 };
