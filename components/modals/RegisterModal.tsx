@@ -5,8 +5,10 @@ import useLoginModal from "@/hooks/useLoginModal";
 import { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
+import { PrismaClient } from "@prisma/client";
 
 const RegisterModal = () => {
+  const prisma = new PrismaClient()
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -28,6 +30,12 @@ const RegisterModal = () => {
     try {
       setIsLoading(true);
       //TODO add REGISTER and LOG IN
+      // const newUser = await prisma.user.create({
+      //   data: {
+      //     name: 'Alice',
+      //     email: 'alice@prisma.io',
+      //   },
+      // })
 
       registerModal.onClose();
     } catch (error) {
