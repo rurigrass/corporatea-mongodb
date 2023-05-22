@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="dark:bg-slate-900 dark:text-white">{children}</body>
+      <body className="dark:bg-slate_ct dark:text-white_ct">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

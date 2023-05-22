@@ -1,6 +1,5 @@
 "use client";
 
-
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 import { useCallback, useState } from "react";
@@ -10,7 +9,7 @@ import Modal from "../Modal";
 const RegisterModal = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -20,7 +19,7 @@ const RegisterModal = () => {
   const onToggle = useCallback(() => {
     if (isLoading) {
       return;
-    }    
+    }
     registerModal.onClose();
     loginModal.onOpen();
   }, [isLoading, registerModal, loginModal]);
@@ -68,11 +67,11 @@ const RegisterModal = () => {
   );
 
   const footerContent = (
-    <div className="text-neutral-400 text-center mt-4 ">
+    <div className=" text-blue_ct-tintiest_ct text-center mt-4 ">
       <p>
         Already have an account?{" "}
         <span
-          className="text-white cursor-pointer hover:underline"
+          className="text-white_Ct cursor-pointer hover:underline"
           onClick={onToggle}
         >
           Sign In

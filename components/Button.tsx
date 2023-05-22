@@ -30,15 +30,15 @@ const Button: React.FC<IButton> = ({
         transition
         border-2
         ${fullWidth ? "w-full" : "w-fit"}
-        ${secondary ? "bg-white" : "bg-sky-300"}
-        ${secondary ? "text-black" : "text-white"}
-        ${secondary ? "border-black" : "border-sky-300"}
+        ${secondary ? "bg-white_ct" : " bg-pink_ct-tintish_ct"}
+        ${secondary ? "text-black_ct" : "text-white_ct"}
+        ${secondary ? "border-black_ct" : "border-sky-300"}
         ${large ? "text-xl" : "text-md"}
         ${large ? "px-5" : "px-4"}
         ${large ? "py-3" : "py-2"}
         ${outline ? "bg-transparent" : ""}
-        ${outline ? "border-white" : ""}
-        ${outline ? "text-white" : ""}
+        ${outline ? "border-white_ct" : ""}
+        ${outline ? "text-white_ct" : ""}
     `}
     >
       {label}

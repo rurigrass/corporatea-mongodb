@@ -7,11 +7,11 @@ const Logo = () => {
         className="
         rounded-full
         h-full
-        p-4
+        p-2
         flex
         items-center
         justify-center
-        hover:bg-blue-300
+        hover:bg-blue_ct-tintish_ct
         hover:bg-opacity-10
         cursor-pointer
         transition
