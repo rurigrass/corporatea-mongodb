@@ -7,7 +7,8 @@ const Logo = () => {
         className="
         rounded-full
         h-full
-        p-2
+        py-2
+        px-3
         flex
         items-center
         justify-center
@@ -15,6 +16,7 @@ const Logo = () => {
         hover:bg-opacity-10
         cursor-pointer
         transition
+        text-2xl
         font-bold
         "
       >

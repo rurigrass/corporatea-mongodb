@@ -1,11 +1,9 @@
 // import Modal from "@/components/Modal";
-import Banner from "@/components/Banner";
 import RegisterModal from "@/components/modals/RegisterModal";
+import Banner from "@/components/Banner";
 import LoginModal from "@/components/modals/LoginModal";
 
 export default function Home() {
-  console.log(process.platform);
-  
   return (
     <>
       <RegisterModal />
@@ -19,7 +17,7 @@ export default function Home() {
       /> */}
 
       <div className="">
-        <Banner/>
+        <Banner />
         Hello world
       </div>
     </>
