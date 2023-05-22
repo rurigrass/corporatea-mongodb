@@ -5,10 +5,9 @@ import useLoginModal from "@/hooks/useLoginModal";
 import { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
-import { PrismaClient } from "@prisma/client";
+import axios from "axios";
 
 const RegisterModal = () => {
-  const prisma = new PrismaClient()
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -26,16 +25,17 @@ const RegisterModal = () => {
     loginModal.onOpen();
   }, [isLoading, registerModal, loginModal]);
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      //TODO add REGISTER and LOG IN
-      // const newUser = await prisma.user.create({
-      //   data: {
-      //     name: 'Alice',
-      //     email: 'alice@prisma.io',
-      //   },
-      // })
+    
+      //REGISTER and LOG IN
+      await axios.post("api/register", {
+        email,
+        password,
+        userName,
+        name,
+      });
 
       registerModal.onClose();
     } catch (error) {
@@ -43,7 +43,7 @@ const RegisterModal = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [registerModal]);
+  }, [registerModal, email, password, userName, name]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">

@@ -1,6 +1,12 @@
-import Header from "@/components/layout/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Provider from "@/components/Provider";
+// import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
+
+import Header from "@/components/layout/Header";
+import { Session } from "next-auth";
+import { SessionProvider, getSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,12 +20,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = getSession();
   return (
+    // <SessionProvider session={pageProps.session}>
     <html lang="en" className="dark">
       <body className="dark:bg-slate_ct dark:text-white_ct">
-        <Header />
-        {children}
+        <Provider>
+          <Toaster/>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
+    // </SessionProvider>
   );
 }
