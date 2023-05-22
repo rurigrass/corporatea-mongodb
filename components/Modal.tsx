@@ -54,7 +54,7 @@ const Modal: React.FC<IModal> = ({
         z-50 
         outline-none 
         focus:outline-none
-        bg-neutral-800
+      bg-blue_ct-tintiest_ct
         bg-opacity-70
       "
       >
@@ -71,7 +71,7 @@ const Modal: React.FC<IModal> = ({
           flex 
           flex-col 
           w-full 
-          bg-black 
+          bg-black_ct 
           outline-none 
           focus:outline-none
           "
@@ -86,13 +86,13 @@ const Modal: React.FC<IModal> = ({
             rounded-t
             "
             >
-              <h3 className="text-3xl font-semibold text-white">{title}</h3>
+              <h3 className="text-3xl font-semibold text-white_ct">{title}</h3>
               <button
                 className="
                 p-1 
                 ml-auto
                 border-0 
-                text-white 
+                text-white_ct 
                 hover:opacity-70
                 transition
               "
