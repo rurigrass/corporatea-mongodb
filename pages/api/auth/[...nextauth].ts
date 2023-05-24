@@ -33,6 +33,10 @@ const authOptions: AuthOptions = {
         });
         // check if user exists and has password exists valid
         if (!user || !user?.hashedPassword) {
+          console.log("did we get here?");
+          console.log(user);
+          
+          
           throw new Error("User does not exist");
         }
         // check is password is correct

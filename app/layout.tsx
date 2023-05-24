@@ -5,6 +5,7 @@ import Provider from "@/components/Provider";
 import { Toaster } from "react-hot-toast";
 
 import Header from "@/components/layout/Header";
+// import { Session } from "next-auth";
 import RegisterModal from "@/components/modals/RegisterModal";
 
 const inter = Inter({ subsets: ["latin"] });
