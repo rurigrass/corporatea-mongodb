@@ -16,7 +16,7 @@ const RegisterModal = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [userName, setUserName] = useState<string>("");
+  const [userName, setuserName] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onToggle = useCallback(() => {
@@ -33,7 +33,7 @@ const RegisterModal = () => {
       setIsLoading(true);
       
       //REGISTER and LOG IN
-      await axios.post("api/register", {
+      await axios.post("/api/register", {
         email,
         password,
         userName,
@@ -71,8 +71,8 @@ const RegisterModal = () => {
         disabled={isLoading}
       />
       <Input
-        placeholder="Username"
-        onChange={(e) => setUserName(e.target.value)}
+        placeholder="userName"
+        onChange={(e) => setuserName(e.target.value)}
         value={userName}
         disabled={isLoading}
       />
