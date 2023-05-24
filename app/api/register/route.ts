@@ -5,6 +5,9 @@ import prisma from '@/libs/prismadb';
 // import NextAuth, {authOptions} from 'next-auth/next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log("HELOWOEOWOFOWOFEW ", req, res);
+  
+  
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
