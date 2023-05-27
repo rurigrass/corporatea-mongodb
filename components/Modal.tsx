@@ -102,7 +102,7 @@ const Modal: React.FC<IModal> = ({
               </button>
             </div>
             {/*body*/}
-            <div className="relative p-1 flex-auto">{body}</div>
+            <div className="relative p-10 flex-auto">{body}</div>
             {/*footer*/}
             <div className="flex flex-col gap-2 p-10">
               <Button
