@@ -1,12 +1,10 @@
-import bcrypt from "bcrypt";
-import NextAuth from "next-auth/next";
-import { AuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-
+import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/libs/prismadb";
+import { AuthOptions } from "next-auth";
+import bcrypt from "bcrypt";
 
-const authOptions: AuthOptions = {
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -35,8 +33,7 @@ const authOptions: AuthOptions = {
         if (!user || !user?.hashedPassword) {
           console.log("did we get here?");
           console.log(user);
-          
-          
+
           throw new Error("User does not exist");
         }
         // check is password is correct
@@ -61,5 +58,3 @@ const authOptions: AuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-
-export default NextAuth(authOptions);
