@@ -18,22 +18,19 @@ export const authOptions: AuthOptions = {
         email: { label: "email", type: "text" },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // check if credentials have userName and password
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Invalid credentials");
+          throw new Error("Please enter email and password");
         }
         // Add logic here to look up the user from the credentials supplied
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email: credentials.email as string
           },
         });
         // check if user exists and has password exists valid
         if (!user || !user?.hashedPassword) {
-          console.log("did we get here?");
-          console.log(user);
-
           throw new Error("User does not exist");
         }
         // check is password is correct

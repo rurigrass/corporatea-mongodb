@@ -2,6 +2,7 @@
 import RegisterModal from "@/components/modals/RegisterModal";
 import Banner from "@/components/Banner";
 import LoginModal from "@/components/modals/LoginModal";
+import User from "@/components/User";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="">
         <Banner />
         Hello world
+        <User/>
       </div>
     </>
   );
