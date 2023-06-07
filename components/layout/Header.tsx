@@ -1,21 +1,26 @@
 "use client";
 
-// import { useRouter } from "next/navigation";
 import LoginButton from "./LoginButton";
 import { useSession } from "next-auth/react";
-// import Button from "../Button";
 import Logo from "./Logo";
 import LogoutButton from "./LogoutButton";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { BsHouseFill, BsBellFill } from 'react-icons/bs';
+import { useState } from "react";
 
 const Header = () => {
-  // const router = useRouter();
   const { data: session } = useSession();
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const items = [
     { label: "Notifications", href: "/notifications", icon: "", auth: true },
     { label: "Profile", href: "/users/123", icon: "", auth: true },
     { label: "yep", href: "", icon: "", auth: true },
   ];
+
+  const handleNav = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <nav className="h-16 w-full bg-black_ct ">
@@ -26,15 +31,45 @@ const Header = () => {
         <div>
           <ul className="hidden sm:flex items-center justify-center">
             {items.map((item) => (
-              <li className="ml-10 uppercase hover:border-b hover:cursor-pointer text-xl ">
+              <li
+                key={item.label}
+                className="ml-10 uppercase hover:border-b hover:cursor-pointer text-xl "
+              >
                 {item.label}
               </li>
             ))}
-            <li className="ml-10 uppercase text-xl">
+            <li className="ml-10 text-xl">
               {session ? <LogoutButton /> : <LoginButton />}
             </li>
           </ul>
-          <div></div>
+          <div onClick={handleNav} className="sm:hidden cursor-pointer">
+            <AiOutlineMenu size={25} />
+          </div>
+        </div>
+      </div>
+      <div
+        className={
+          menuOpen
+            ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-blue_ct-normal_ct p-5 ease-in duration-500"
+            : "fixed left-[-100%] ease-out duration-500"
+        }
+      >
+        <div className="flex w-full item justify-end">
+          <div onClick={handleNav} className="cursor-pointer">
+            <AiOutlineClose size={25} />
+          </div>
+        </div>
+        <div className="flex-col py-4">
+          <ul>
+            {items.map((item) => (
+              <li key={item.label} className="py-4 cursor-pointer">
+                {item.label}
+              </li>
+            ))}
+            <li className="py-4 cursor-pointer">
+              {session ? <LogoutButton /> : <LoginButton />}
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
