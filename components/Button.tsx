@@ -4,9 +4,10 @@ interface IButton {
   fullWidth?: boolean;
   small?: boolean;
   large?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   outline?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<IButton> = ({
@@ -18,19 +19,23 @@ const Button: React.FC<IButton> = ({
   onClick,
   disabled,
   outline,
+  type,
 }) => {
+  console.log("BUTTON: ", disabled);
+
   return (
     <button
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={`
-        disabled: opacity-70
-        disabled: cursor-not-allowed
-        rounded-full
-        font-semibold
-        hover:opacity-80
-        transition
-        border-2
+      rounded-full
+      font-semibold
+      hover:opacity-80
+      transition
+      border-2
+        ${disabled && "opacity-70"}
+        ${disabled && "cursor-not-allowed"}
         ${fullWidth ? "w-full" : "w-fit"}
         ${secondary ? "bg-white_ct" : "bg-green_ct-green_ct"}
         ${secondary ? "text-black_ct" : "text-white_ct"}

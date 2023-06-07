@@ -60,7 +60,8 @@ const Modal: React.FC<IModal> = ({
       >
         <div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
           {/*content*/}
-          <div
+          <form
+            onSubmit={handleSubmit}
             className="
           h-full
           lg:h-auto
@@ -111,11 +112,11 @@ const Modal: React.FC<IModal> = ({
                 secondary
                 fullWidth
                 large
-                onClick={handleSubmit}
+                type={"submit"}
               />
               {footer}
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ import { useCallback, useState } from "react";
 import { signIn } from "next-auth/react";
 import Input from "../Input";
 import Modal from "../Modal";
+import { toast } from "react-hot-toast";
 
 const LoginModal = () => {
   const loginModal = useLoginModal();
@@ -27,7 +28,7 @@ const LoginModal = () => {
       setIsLoading(true);
       //TODO add LOG IN
       await  signIn("credentials", { email, password })
-
+      toast.success('Logged in');
       loginModal.onClose();
     } catch (error) {
       console.log(error);
@@ -45,6 +46,7 @@ const LoginModal = () => {
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         disabled={isLoading}
+        required={true}
       />
       <Input
         placeholder="Password"
@@ -53,6 +55,7 @@ const LoginModal = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}
+        required={true}
       />
     </div>
   );
@@ -70,6 +73,8 @@ const LoginModal = () => {
       </p>
     </div>
   );
+
+
 
   return (
     <Modal
