@@ -28,22 +28,26 @@ const RegisterModal = () => {
   }, [isLoading, registerModal, loginModal]);
 
   const onSubmit = useCallback(async () => {
-    setIsLoading(true);
-    //REGISTER and LOG IN
-    await axios
-      .post("/api/register", {
+    try {
+      setIsLoading(true);
+      await axios.post("/api/register", {
         email,
         password,
         userName,
         name,
-      })
-      .then(() => toast.success("Account Created"))
-      .catch(() => toast.error("Something went wrong!"))
-      .finally(() => {
-        signIn("credentials", { email, password }),
-          registerModal.onClose(),
-          setIsLoading(false);
       });
+      // setIsLoading(false);
+      toast.success("Account created.");
+      signIn("credentials", {
+        email,
+        password,
+      });
+      registerModal.onClose();
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
   }, [registerModal, email, password, userName, name]);
 
   const bodyContent = (

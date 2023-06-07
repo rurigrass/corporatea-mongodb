@@ -13,7 +13,7 @@ const LoginModal = () => {
   const registerModal = useRegisterModal();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);  
 
   const onToggle = useCallback(() => {
     if (isLoading) {

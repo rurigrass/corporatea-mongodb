@@ -21,7 +21,6 @@ const Button: React.FC<IButton> = ({
   outline,
   type,
 }) => {
-  console.log("BUTTON: ", disabled);
 
   return (
     <button

@@ -29,12 +29,16 @@ const Modal: React.FC<IModal> = ({
     onClose();
   }, [disabled, onClose]);
 
-  const handleSubmit = useCallback(() => {
-    if (disabled) {
-      return;
-    }
-    onSubmit();
-  }, [disabled, onSubmit]);
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (disabled) {
+        return;
+      }
+      onSubmit();
+    },
+    [disabled, onSubmit]
+  );
 
   if (!isOpen) {
     return null;
@@ -60,8 +64,7 @@ const Modal: React.FC<IModal> = ({
       >
         <div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
           {/*content*/}
-          <form
-            onSubmit={handleSubmit}
+          <div
             className="
           h-full
           lg:h-auto
@@ -103,20 +106,23 @@ const Modal: React.FC<IModal> = ({
               </button>
             </div>
             {/*body*/}
-            <div className="relative p-10 flex-auto">{body}</div>
-            {/*footer*/}
-            <div className="flex flex-col gap-2 p-10">
-              <Button
-                disabled={disabled}
-                label={actionLabel}
-                secondary
-                fullWidth
-                large
-                type={"submit"}
-              />
-              {footer}
-            </div>
-          </form>
+            <form onSubmit={handleSubmit}>
+              <div className="relative p-10 flex-auto">{body}</div>
+              {/*footer*/}
+              <div className="flex flex-col gap-2 p-10">
+                <Button
+                  disabled={disabled}
+                  label={actionLabel}
+                  secondary
+                  fullWidth
+                  large
+                  // type={"submit"}
+                  // onClick={handleSubmit}
+                />
+                {footer}
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

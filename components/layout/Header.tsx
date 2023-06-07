@@ -9,7 +9,7 @@ import LogoutButton from "./LogoutButton";
 
 const Header = () => {
   // const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session } = useSession();  
 
   return (
     <div className="h-16 bg-black_ct flex items-center justify-between">
