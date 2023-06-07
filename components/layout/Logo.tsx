@@ -8,7 +8,6 @@ const Logo = () => {
         rounded-full
         h-full
         py-2
-        px-3
         flex
         items-center
         justify-center
