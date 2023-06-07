@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import useLoginModal from "@/hooks/useLoginModal";
 // import useCurrentUser from "@/hooks/useCurrentUser";
 
-const HeaderSpillButton = () => {
+const LoginButton = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
   //   const { data: currentUser } = useCurrentUser();
@@ -59,11 +59,11 @@ const HeaderSpillButton = () => {
             text-lg
         "
         >
-          Spill
+          Login
         </p>
       </div>
     </div>
   );
 };
 
-export default HeaderSpillButton;
+export default LoginButton;

@@ -28,59 +28,52 @@ const RegisterModal = () => {
   }, [isLoading, registerModal, loginModal]);
 
   const onSubmit = useCallback(async () => {
-    try {
-      console.log("IS LOADING ", isLoading);
-      setIsLoading(true);
-
-      //REGISTER and LOG IN
-      await axios
-        .post("/api/register", {
-          email,
-          password,
-          userName,
-          name,
-        })
-        .then(() => toast.success("User has been registered!"))
-        .catch(() => toast.error("Something went wrong!"));
-
-      // toast.success("Account Created!");
-
-      signIn("credentials", {
+    setIsLoading(true);
+    //REGISTER and LOG IN
+    await axios
+      .post("/api/register", {
         email,
         password,
+        userName,
+        name,
+      })
+      .then(() => toast.success("Account Created"))
+      .catch(() => toast.error("Something went wrong!"))
+      .finally(() => {
+        signIn("credentials", { email, password }),
+          registerModal.onClose(),
+          setIsLoading(false);
       });
-
-      registerModal.onClose();
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
   }, [registerModal, email, password, userName, name]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Input
         placeholder="Email"
+        type="email"
+        autoComplete="email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         disabled={isLoading}
       />
       <Input
         placeholder="Name"
+        type="text"
         onChange={(e) => setName(e.target.value)}
         value={name}
         disabled={isLoading}
       />
       <Input
         placeholder="userName"
+        type="text"
         onChange={(e) => setuserName(e.target.value)}
         value={userName}
         disabled={isLoading}
       />
       <Input
         placeholder="Password"
+        type="password"
+        autoComplete="current-password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}
