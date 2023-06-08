@@ -51,7 +51,7 @@ const Header = () => {
         className={
           menuOpen
             ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-blue_ct-normal_ct p-5 ease-in duration-500"
-            : "fixed left-[-100%] ease-out duration-500"
+            : "fixed left-[-65%] ease-out duration-1000"
         }
       >
         <div className="flex w-full item justify-end">
