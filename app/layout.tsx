@@ -1,12 +1,11 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Provider from "@/components/Provider";
-// import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 
 import Header from "@/components/layout/Header";
 // import { Session } from "next-auth";
-import RegisterModal from "@/components/modals/RegisterModal";
+// import RegisterModal from "@/components/modals/RegisterModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,17 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <SessionProvider session={pageProps.session}>
     <html lang="en" className="dark">
       <body className="dark:bg-slate_ct dark:text-white_ct">
         <Provider>
-          <RegisterModal/>
-          <Toaster/>
+          <Toaster />
           <Header />
           {children}
         </Provider>
       </body>
     </html>
-    // </SessionProvider>
   );
 }
