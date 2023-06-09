@@ -16,11 +16,10 @@ export default function Home() {
         actionLabel="Submit"
         title="yoyo "
       /> */}
-
       <div className="">
         <Banner />
         Hello world
-        <User/>
+        <User />
       </div>
     </>
   );

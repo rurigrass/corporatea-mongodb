@@ -10,13 +10,11 @@ const LoginButton = () => {
   const loginModal = useLoginModal();
   //   const { data: currentUser } = useCurrentUser();
 
-    const onClick = useCallback(() => {
+  const onClick = useCallback(() => {
     //   if (!currentUser) {
-        return loginModal.onOpen();
+    return loginModal.onOpen();
     //   }
-
-      router.push('/');
-    }, [loginModal, router]);
+  }, [loginModal, router]);
 
   return (
     <div onClick={onClick}>

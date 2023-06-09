@@ -1,21 +1,23 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
 import { Session } from "next-auth";
+import useSidebar from "@/hooks/useSidebar";
+import { useSession } from "next-auth/react";
+import { useCallback } from "react";
 
-type SidebarProps = {
-  isOpen: boolean;
-  items: itemProps[];
-  handleNav: () => void;
-  session: Session | null;
-};
-
-type itemProps = {
+type ItemProps = {
   label: string;
   href: string;
   icon: string;
   auth: boolean;
+};
+
+type SidebarProps = {
+  items: ItemProps[];
 };
 
 const sideVariants = {
@@ -29,33 +31,62 @@ const sideVariants = {
   },
 };
 
-const Sidebar = ({ isOpen, items, handleNav, session }: SidebarProps) => {
+const backgroundVariants = {
+  closed: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+  },
+};
+
+const Sidebar = ({ items }: SidebarProps) => {
+  const { data: session } = useSession();
+  const sidebar = useSidebar();
+
+  const toggleSidebar = useCallback(() => {
+    sidebar.isOpen ? sidebar.onClose() : sidebar.onOpen();
+  }, [sidebar]);
+
   return (
     <AnimatePresence>
-      {isOpen && (
-        <motion.nav
-          className="bg-blue_ct-normal_ct p-5 h-screen "
+      {sidebar.isOpen && (
+        <motion.div
+          className="
+        fixed 
+        inset-0 
+      bg-blue_ct-tintiest_ct
+        bg-opacity-70"
           initial="closed"
           animate="open"
           exit="closed"
-          variants={sideVariants}
+          variants={backgroundVariants}
         >
-          <div className="flex w-full item justify-end">
-            <div onClick={handleNav} className="cursor-pointer">
-              <AiOutlineClose size={25} />
+          <motion.nav
+            className="bg-blue_ct-normal_ct p-5 h-screen "
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={sideVariants}
+          >
+            <div className="flex w-full item justify-end">
+              <div onClick={toggleSidebar} className="cursor-pointer">
+                <AiOutlineClose size={25} />
+              </div>
             </div>
-          </div>
-          <ul>
-            {items.map((item) => (
-              <li key={item.label} className="py-4 cursor-pointer">
-                <a href={item.href}>{item.label}</a>
+            <ul>
+              {items &&
+                items.map((item) => (
+                  <li key={item.label} className="py-4 cursor-pointer">
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))}
+              <li className="py-4 cursor-pointer">
+                {session ? <LogoutButton /> : <LoginButton />}
               </li>
-            ))}
-            <li className="py-4 cursor-pointer">
-              {session ? <LogoutButton /> : <LoginButton />}
-            </li>
-          </ul>
-        </motion.nav>
+            </ul>
+          </motion.nav>
+        </motion.div>
       )}
     </AnimatePresence>
   );
