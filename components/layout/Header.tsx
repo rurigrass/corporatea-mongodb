@@ -5,16 +5,15 @@ import { useSession } from "next-auth/react";
 import Logo from "./Logo";
 import LogoutButton from "./LogoutButton";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { AnimatePresence, motion, useCycle } from "framer-motion";
-import { useCallback, useState } from "react";
+import { IconType } from "react-icons/lib";
+import { ReactNode, useCallback, useState } from "react";
 import Sidebar from "./Sidebar";
 import useSidebar from "@/hooks/useSidebar";
 
 type ItemProps = {
   label: string;
   href: string;
-  icon: string;
+  icon: ReactNode;
   auth: boolean;
 };
 

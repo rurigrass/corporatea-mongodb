@@ -2,17 +2,17 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
+import { IconType } from "react-icons";
 import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
-import { Session } from "next-auth";
 import useSidebar from "@/hooks/useSidebar";
 import { useSession } from "next-auth/react";
-import { useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 
 type ItemProps = {
   label: string;
   href: string;
-  icon: string;
+  icon: ReactNode;
   auth: boolean;
 };
 

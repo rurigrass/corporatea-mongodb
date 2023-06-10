@@ -2,6 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Provider from "@/components/Provider";
 import { Toaster } from "react-hot-toast";
+import { BsBellFill } from 'react-icons/bs';
+import { FaUser } from 'react-icons/fa';
 
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -16,9 +18,9 @@ export const metadata = {
 };
 
 const items = [
-  { label: "Notifications", href: "/notifications", icon: "", auth: true },
-  { label: "Profile", href: "/users/123", icon: "", auth: true },
-  { label: "yep", href: "", icon: "", auth: true },
+  { label: "Notifications", href: "/notifications", icon: <BsBellFill/>, auth: true },
+  { label: "Profile", href: "/users/123", icon: <FaUser/>, auth: true },
+  // { label: "yep", href: "", icon: "", auth: true },
 ];
 
 export default function RootLayout({
