@@ -65,7 +65,7 @@ const Sidebar = ({ items }: SidebarProps) => {
           variants={backgroundVariants}
         >
           <motion.nav
-            className="bg-blue_ct-normal_ct p-5 h-screen "
+            className="bg-blue_ct-normal_ct p-5 h-screen"
             initial="closed"
             animate="open"
             exit="closed"
@@ -76,20 +76,17 @@ const Sidebar = ({ items }: SidebarProps) => {
                 <AiOutlineClose size={25} />
               </div>
             </div>
-            <ul className="space-y-4">
-              {/* {items &&
+            <ul className="space-y-4 mt-2">
+              {items &&
                 items.map((item) => (
-                  // <li key={item.label} className="py-4 cursor-pointer">
-                    {/* <a href={item.href}>{item.label}</a> */}
-                {items && items.map((item) => (
-              <SidebarItem
-                key={item.href}
-                auth={item.auth}
-                href={item.href} 
-                icon={item.icon} 
-                label={item.label}
-              />
-            ))}
+                  <SidebarItem
+                    key={item.href}
+                    auth={item.auth}
+                    href={item.href}
+                    icon={item.icon}
+                    label={item.label}
+                  />
+                ))}
               <li className="cursor-pointer">
                 {session ? <LogoutButton /> : <LoginButton />}
               </li>

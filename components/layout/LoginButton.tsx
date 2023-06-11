@@ -3,17 +3,13 @@ import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/hooks/useLoginModal";
-// import useCurrentUser from "@/hooks/useCurrentUser";
 
 const LoginButton = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
-  //   const { data: currentUser } = useCurrentUser();
 
   const onClick = useCallback(() => {
-    //   if (!currentUser) {
     return loginModal.onOpen();
-    //   }
   }, [loginModal, router]);
 
   return (
