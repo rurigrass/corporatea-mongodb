@@ -2,12 +2,14 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
-import { IconType } from "react-icons";
+import { IconBase, IconType } from "react-icons";
 import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
 import useSidebar from "@/hooks/useSidebar";
 import { useSession } from "next-auth/react";
 import { ReactNode, useCallback } from "react";
+
+import SidebarItem from "./SidebarItem";
 
 type ItemProps = {
   label: string;
@@ -74,14 +76,21 @@ const Sidebar = ({ items }: SidebarProps) => {
                 <AiOutlineClose size={25} />
               </div>
             </div>
-            <ul>
-              {items &&
+            <ul className="space-y-4">
+              {/* {items &&
                 items.map((item) => (
-                  <li key={item.label} className="py-4 cursor-pointer">
-                    <a href={item.href}>{item.label}</a>
-                  </li>
-                ))}
-              <li className="py-4 cursor-pointer">
+                  // <li key={item.label} className="py-4 cursor-pointer">
+                    {/* <a href={item.href}>{item.label}</a> */}
+                {items && items.map((item) => (
+              <SidebarItem
+                key={item.href}
+                auth={item.auth}
+                href={item.href} 
+                icon={item.icon} 
+                label={item.label}
+              />
+            ))}
+              <li className="cursor-pointer">
                 {session ? <LogoutButton /> : <LoginButton />}
               </li>
             </ul>
