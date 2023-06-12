@@ -5,6 +5,7 @@ interface AvatarProps {
 }
 
 const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
+  
   return <div></div>;
 };
 

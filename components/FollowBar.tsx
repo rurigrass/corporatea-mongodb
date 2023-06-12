@@ -1,19 +1,11 @@
 "use client";
 
-import getUsers from "@/app/actions/getUsers";
-// import useUsers from "@/hooks/useUsers";
 import Avatar from "./Avatar";
-import fetcher from "@/libs/fetcher";
 import { SafeUser } from "../types";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-interface FollowBarProps {
-  users: SafeUser[];
-}
-
 const FollowBar = () => {
-
   const [users, setUsers] = useState<SafeUser[]>([]);
 
   useEffect(() => {
@@ -30,8 +22,11 @@ const FollowBar = () => {
     fetchData();
   }, []);
 
-
   // console.log(users);
+
+  if (users.length === 0) {
+    return null;
+  }
 
   return (
     <div className="px-6 py-4">
@@ -40,8 +35,13 @@ const FollowBar = () => {
         <div className="flex flex-col gap-6 mt-4">
           {users.map((user: Record<string, any>) => (
             <div className="flex flex-row gap-4" key={user.id}>
-              {/* <Avatar userId={user.id}/> */}
-              {user.name}
+              <Avatar userId={user.id} />
+              <div className="flex flex-col">
+                <p className="text-white font-semibold text-sm">{user.name}</p>
+                <p className=" text-gray_ct-grayer_ct text-sm">
+                  @{user.userName}
+                </p>
+              </div>
             </div>
           ))}
         </div>
