@@ -1,19 +1,15 @@
-'use client'
+"use client";
 // import Modal from "@/components/Modal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import Banner from "@/components/Banner";
 import LoginModal from "@/components/modals/LoginModal";
-// import User from "@/components/User";
 import FollowBar from "@/components/FollowBar";
-import getUsers from "./actions/getUsers";
 import { SafeUser } from "../types"; // Import User type from your types.ts file
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Home = async () => {
-  const [users, setUsers] = useState([]);
-  // const users: SafeUser[] = await getUsers();
-  // const users: SafeUser[] = await getUsers();
+const Home = () => {
+  const [users, setUsers] = useState<SafeUser[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +41,7 @@ const Home = async () => {
         <Banner />
         Hello world
         {/* <User /> */}
-        {/* <FollowBar users={users} /> */}
+        <FollowBar users={users} />
       </div>
     </>
   );
