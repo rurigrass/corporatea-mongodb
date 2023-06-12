@@ -10,7 +10,7 @@ interface FollowBarProps {
 
 const FollowBar = ({ users }: FollowBarProps) => {
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <div className="px-6 py-4">
@@ -19,6 +19,7 @@ const FollowBar = ({ users }: FollowBarProps) => {
         <div className="flex flex-col gap-6 mt-4">
           {users.map((user: Record<string, any>) => (
             <div className="flex flex-row gap-4" key={user.id}>
+              {/* <Avatar userId={user.id}/> */}
               {user.name}
             </div>
           ))}
