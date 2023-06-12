@@ -1,14 +1,35 @@
+"use client";
+
 import getUsers from "@/app/actions/getUsers";
 // import useUsers from "@/hooks/useUsers";
 import Avatar from "./Avatar";
 import fetcher from "@/libs/fetcher";
 import { SafeUser } from "../types";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface FollowBarProps {
   users: SafeUser[];
 }
 
-const FollowBar = ({ users }: FollowBarProps) => {
+const FollowBar = () => {
+
+  const [users, setUsers] = useState<SafeUser[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/users");
+        const data = response.data;
+        setUsers(data);
+      } catch (error) {
+        console.log("Error fetching users:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   // console.log(users);
 

@@ -1,4 +1,3 @@
-"use client";
 // import Modal from "@/components/Modal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import Banner from "@/components/Banner";
@@ -9,23 +8,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const [users, setUsers] = useState<SafeUser[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/users");
-        const data = response.data;
-        setUsers(data);
-      } catch (error) {
-        console.log("Error fetching users:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(users);
+  
+  // console.log(users);
   return (
     <>
       <RegisterModal />
@@ -41,7 +25,7 @@ const Home = () => {
         <Banner />
         Hello world
         {/* <User /> */}
-        <FollowBar users={users} />
+        <FollowBar />
       </div>
     </>
   );
