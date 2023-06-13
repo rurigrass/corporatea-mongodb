@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 import { SafeUser } from "../types";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import prisma from "@/libs/prismadb";
 
 const FollowBar = () => {
   const [users, setUsers] = useState<SafeUser[]>([]);
@@ -23,6 +24,20 @@ const FollowBar = () => {
   }, []);
 
   // console.log(users);
+
+  // const users = await prisma.user.findMany({
+  //   select: {
+  //       id: true,
+  //       name: true,
+  //       userName: true,
+  //       email: true,
+  //       updatedAt: true,
+  //       createdAt: true
+  //   },
+  //   orderBy: {
+  //     createdAt: 'desc'
+  //   },
+  // });
 
   if (users.length === 0) {
     return null;
