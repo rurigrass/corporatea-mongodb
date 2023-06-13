@@ -23,22 +23,6 @@ const FollowBar = () => {
     fetchData();
   }, []);
 
-  // console.log(users);
-
-  // const users = await prisma.user.findMany({
-  //   select: {
-  //       id: true,
-  //       name: true,
-  //       userName: true,
-  //       email: true,
-  //       updatedAt: true,
-  //       createdAt: true
-  //   },
-  //   orderBy: {
-  //     createdAt: 'desc'
-  //   },
-  // });
-
   if (users.length === 0) {
     return null;
   }

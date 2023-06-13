@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import prisma from "@/libs/prismadb";
+import { useRouter } from "next/navigation";
 
 interface AvatarProps {
   userId: string;
@@ -10,9 +11,7 @@ interface AvatarProps {
 }
 
 const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
-
-  // console.log("USERID ", userId);
-  
+  const router = useRouter();
 
   const [user, setUser] = useState();
 
@@ -29,10 +28,26 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
     fetchData();
   }, []);
 
-  console.log(user);
+  const onClick = useCallback(
+    (event: any) => {
+      event.stopPropagation(); // overides parent element onclick
+      const url = `/users/${userId}`;
+      router.push(url);
+    },
+    [router, userId]
+  );
 
-
-  return <div></div>;
+  return (
+    <div
+      className={`
+  ${hasBorder ? "border-4 border-black_ct" : ""}
+  ${isLarge ? "h-32" : "h-12"}
+  ${hasBorder ? "w-32" : "w-12"}
+  `}
+    >
+      click me
+    </div>
+  );
 };
 
 export default Avatar;

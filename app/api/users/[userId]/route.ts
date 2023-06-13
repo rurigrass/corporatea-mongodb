@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
+import getUser from "@/app/actions/getUser";
 
 type ParamProps = {
   userId?: string;
@@ -10,19 +11,16 @@ export async function GET(
   { params }: { params: ParamProps }
 ) {
   const { userId } = params;
-  console.log(userId);
-
   if (request.method !== "GET") {
     console.log("POOP");
   }
-
   try {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: userId,
-      },
-    });
-    return NextResponse.json(user, { status: 200 });
+    if (userId !== undefined) {
+      const user = await getUser(userId);
+      return NextResponse.json(user, { status: 200 });
+    } else {
+      return NextResponse.json({ error: "User ID is undefined" });
+    }
   } catch (error) {
     console.log("Error fetching users:", error);
     return NextResponse.json({ error });

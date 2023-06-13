@@ -9,7 +9,7 @@ import axios from "axios";
 import getUser from "./actions/getUser";
 import getUsers from "./actions/getUsers";
 
-const Home = async () => {
+const Home = () => {
 
   // const user = await getUser('6487223c6b822ef73c9d29ce')
   // console.log("user ", user);
