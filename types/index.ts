@@ -33,25 +33,25 @@ import { User } from "@prisma/client";
 // };
 
 //dunno why name has to be nullable
-// export type SafeUser = {
-//     id: string;
-//     name: string | null; // Allow for nullable name property ?????
-//     userName?: string;
-//     bio?: string;
-//     email?: string;
-//     emailVerified?: Date;
-//     image?: string;
-//     coverImage?: string;
-//     profileImage?: string;
-//     hashedPassword?: string;
-//     createdAt: Date;
-//     updatedAt: Date;
-//     followingIds: string[];
-//     hasNotification?: boolean;
-//     spills?: Spill[];
-//     comments?: Comment[];
-//     notifications?: Notification[];
-//   };
+export type UserProps = {
+    id: string;
+    name: string | null; // Allow for nullable name property ?????
+    userName: string;
+    bio?: string;
+    email: string;
+    emailVerified?: Date;
+    image?: string;
+    coverImage?: string;
+    profileImage?: string;
+    hashedPassword?: string;
+    createdAt: Date;
+    updatedAt: Date;
+    followingIds: string[];
+    hasNotification?: boolean;
+    spills?: Spill[];
+    comments?: Comment[];
+    notifications?: Notification[];
+  };
 
 //   type SafeUser = {
 //     id: string;

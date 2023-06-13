@@ -3,6 +3,8 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import prisma from "@/libs/prismadb";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { UserProps } from "@/types";
 
 interface AvatarProps {
   userId: string;
@@ -13,7 +15,7 @@ interface AvatarProps {
 const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   const router = useRouter();
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<UserProps>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,15 +39,33 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
     [router, userId]
   );
 
+  if (user === undefined) {
+    return null;
+  }
+  
   return (
     <div
       className={`
-  ${hasBorder ? "border-4 border-black_ct" : ""}
-  ${isLarge ? "h-32" : "h-12"}
-  ${hasBorder ? "w-32" : "w-12"}
-  `}
+        ${hasBorder ? "border-4 border-black_ct" : ""}
+        ${isLarge ? "h-32" : "h-12"}
+        ${hasBorder ? "w-32" : "w-12"}
+        rounded-full 
+        hover:opacity-90 
+        transition 
+        cursor-pointer 
+        relative
+      `}
     >
-      click me
+      <Image
+      fill
+      style={{
+        objectFit: 'cover',
+        borderRadius: '100%'
+      }}
+      alt="Avatar"
+      onClick={onClick}
+      src={user?.profileImage || '/images/placeholder.png'}
+      />
     </div>
   );
 };
