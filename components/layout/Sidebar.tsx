@@ -55,17 +55,18 @@ const Sidebar = ({ items }: SidebarProps) => {
       {sidebar.isOpen && (
         <motion.div
           className="
-        fixed 
-        inset-0 
-      bg-blue-tintiest
-        bg-opacity-70"
+          fixed 
+          inset-0 
+        bg-blue-tintiest
+          bg-opacity-70
+           z-10"
           initial="closed"
           animate="open"
           exit="closed"
           variants={backgroundVariants}
         >
           <motion.nav
-            className="bg-blue-normal_ct p-5 h-screen"
+            className="bg-blue-normal p-5 h-screen"
             initial="closed"
             animate="open"
             exit="closed"

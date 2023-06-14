@@ -1,3 +1,4 @@
+//serverside auth - not used
 import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from "@/libs/prismadb";

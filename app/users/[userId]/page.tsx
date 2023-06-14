@@ -1,6 +1,8 @@
 "use client";
 
 import MiniHeader from "@/components/layout/MiniHeader";
+import UserBio from "@/components/users/UserBio";
+import UserHero from "@/components/users/UserHero";
 import { UserProps } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -12,7 +14,6 @@ type ParamsProps = {
 
 const UserView = ({ params }: { params: ParamsProps }) => {
   const { userId } = params;
-
   const [user, setUser] = useState<UserProps>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -42,8 +43,9 @@ const UserView = ({ params }: { params: ParamsProps }) => {
 
   return (
     <>
-      <MiniHeader showBackArrow label={user.userName}/>
-      page
+      <MiniHeader showBackArrow label={user.userName} />
+      <UserHero user={user} />
+      <UserBio user={user}/>
     </>
   );
 };
