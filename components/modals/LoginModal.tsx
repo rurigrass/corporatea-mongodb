@@ -28,7 +28,7 @@ const LoginModal = () => {
       setIsLoading(true);
       //TODO add LOG IN
       await  signIn("credentials", { email, password })
-      toast.success('Logged in');
+      toast.success("Logged in");
       loginModal.onClose();
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ const LoginModal = () => {
   const footerContent = (
     <div className="text-blue-tintiest text-center mt-4 ">
       <p>
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <span
           className="text-white cursor-pointer hover:underline"
           onClick={onToggle}

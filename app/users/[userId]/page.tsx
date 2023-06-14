@@ -31,7 +31,7 @@ const UserView = ({ params }: { params: ParamsProps }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   if (isLoading || !user) {
     return (

@@ -10,7 +10,7 @@ const LoginButton = () => {
 
   const onClick = useCallback(() => {
     return loginModal.onOpen();
-  }, [loginModal, router]);
+  }, [loginModal]);
 
   return (
     <div onClick={onClick}>

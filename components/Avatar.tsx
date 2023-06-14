@@ -28,7 +28,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
       }
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   const onClick = useCallback(
     (event: any) => {
