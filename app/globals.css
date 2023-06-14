@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-    @apply h-full bg-black_ct
+    @apply h-full bg-black
 }
 
 body {
-    @apply h-full bg-black_ct
+    @apply h-full bg-black
 }
 

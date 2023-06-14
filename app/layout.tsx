@@ -2,8 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Provider from "@/components/Provider";
 import { Toaster } from "react-hot-toast";
-import { BsBellFill } from 'react-icons/bs';
-import { FaUser } from 'react-icons/fa';
+import { BsBellFill } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -18,8 +18,13 @@ export const metadata = {
 };
 
 const items = [
-  { label: "Notifications", href: "/notifications", icon: <BsBellFill/>, auth: true },
-  { label: "Profile", href: "/users/123", icon: <FaUser/>, auth: true },
+  {
+    label: "Notifications",
+    href: "/notifications",
+    icon: <BsBellFill />,
+    auth: true,
+  },
+  { label: "Profile", href: "/users/123", icon: <FaUser />, auth: true },
   // { label: "yep", href: "", icon: "", auth: true },
 ];
 
@@ -30,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="dark:bg-slate_ct dark:text-white_ct">
+      <body className="dark:bg-slate dark:text-white">
         <Provider>
           <Toaster />
           <Header items={items} />

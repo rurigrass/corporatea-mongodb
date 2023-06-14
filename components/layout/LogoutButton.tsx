@@ -19,7 +19,7 @@ const LogoutButton = () => {
         flex
         items-center
         justify-center
-      bg-blue_ct-tintiest_ct 
+      bg-blue-tintiest 
         hover:bg-opacity-80 
         transition 
         cursor-pointer
@@ -33,7 +33,7 @@ const LogoutButton = () => {
         px-4
         py-1
         rounded-full 
-        bg-red_ct
+        bg-red
         hover:bg-opacity-90 
         cursor-pointer
       "
@@ -43,7 +43,7 @@ const LogoutButton = () => {
             lg:block 
             text-center
             font-semibold
-            text-white_ct 
+            text-white 
             text-lg
         "
         >

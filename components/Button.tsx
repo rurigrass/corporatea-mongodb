@@ -36,9 +36,9 @@ const Button: React.FC<IButton> = ({
         ${disabled && "opacity-70"}
         ${disabled && "cursor-not-allowed"}
         ${fullWidth ? "w-full" : "w-fit"}
-        ${secondary ? "bg-white_ct" : "bg-green_ct-green_ct"}
-        ${secondary ? "text-black_ct" : "text-white_ct"}
-        ${secondary ? "border-black_ct" : "border-blue_ct-tintiest_ct"}
+        ${secondary ? "bg-white" : "bg-green-green"}
+        ${secondary ? "text-black" : "text-white"}
+        ${secondary ? "border-black" : "border-blue-tintiest"}
         ${large ? "text-xl" : "text-md"}
         ${large ? "px-5" : "px-4"}
         ${large ? "py-3" : "py-2"}
@@ -46,8 +46,8 @@ const Button: React.FC<IButton> = ({
         ${small ? "px-3" : "px-4"}
         ${small ? "py-1" : "py-2"}
         ${outline ? "bg-transparent" : ""}
-        ${outline ? "border-white_ct" : ""}
-        ${outline ? "text-white_ct" : ""}
+        ${outline ? "border-white" : ""}
+        ${outline ? "text-white" : ""}
     `}
     >
       {label}

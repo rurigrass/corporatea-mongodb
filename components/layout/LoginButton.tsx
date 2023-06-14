@@ -25,7 +25,7 @@ const LoginButton = () => {
         flex
         items-center
         justify-center
-      bg-blue_ct-tintiest_ct 
+      bg-blue-tintiest 
         hover:bg-opacity-80 
         transition 
         cursor-pointer
@@ -39,7 +39,7 @@ const LoginButton = () => {
         px-4
         py-1
         rounded-full 
-        bg-green_ct-green_ct
+        bg-green-green
         hover:bg-opacity-90 
         cursor-pointer
       "
@@ -49,7 +49,7 @@ const LoginButton = () => {
             lg:block 
             text-center
             font-semibold
-            text-white_ct 
+            text-white 
             text-lg
         "
         >

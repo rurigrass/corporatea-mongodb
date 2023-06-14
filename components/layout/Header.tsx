@@ -31,7 +31,7 @@ const Header = ({ items }: HeaderProps) => {
 
   return (
     <>
-      <nav className="h-16 w-full bg-black_ct">
+      <nav className="h-16 w-full bg-black">
         <div className="flex items-center justify-between h-full w-full px-4 2xl:px-16">
           <div>
             <Logo />

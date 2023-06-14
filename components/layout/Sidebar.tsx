@@ -57,7 +57,7 @@ const Sidebar = ({ items }: SidebarProps) => {
           className="
         fixed 
         inset-0 
-      bg-blue_ct-tintiest_ct
+      bg-blue-tintiest
         bg-opacity-70"
           initial="closed"
           animate="open"
@@ -65,7 +65,7 @@ const Sidebar = ({ items }: SidebarProps) => {
           variants={backgroundVariants}
         >
           <motion.nav
-            className="bg-blue_ct-normal_ct p-5 h-screen"
+            className="bg-blue-normal_ct p-5 h-screen"
             initial="closed"
             animate="open"
             exit="closed"

@@ -32,7 +32,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
 
   const onClick = useCallback(
     (event: any) => {
-      event.stopPropagation(); // overides parent element onclick
+      // event.stopPropagation(); // overides parent element onclick
       const url = `/users/${userId}`;
       router.push(url);
     },
@@ -46,7 +46,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   return (
     <div
       className={`
-        ${hasBorder ? "border-4 border-black_ct" : ""}
+        ${hasBorder ? "border-4 border-black" : ""}
         ${isLarge ? "h-32" : "h-12"}
         ${hasBorder ? "w-32" : "w-12"}
         rounded-full 

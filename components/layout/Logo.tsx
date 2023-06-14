@@ -11,7 +11,7 @@ const Logo = () => {
         flex
         items-center
         justify-center
-        hover:bg-blue_ct-tintish_ct
+        hover:bg-blue-tintish
         hover:bg-opacity-10
         cursor-pointer
         transition

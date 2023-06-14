@@ -9,29 +9,29 @@ module.exports = {
   theme: {
     colors: {
       // Configure your color palette here
-      black_ct: "#000000",
-      white_ct: "#FFFFFF",
-      slate_ct: "#0f172a",
-      red_ct: "#EE0000",
-      green_ct: {
-        green_ct: "#00AB55",
-        shady_ct: "#008746",
+      black: "#000000",
+      white: "#FFFFFF",
+      slate: "#0f172a",
+      red: "#EE0000",
+      green: {
+        green: "#00AB55",
+        shady: "#008746",
       },
-      pink_ct: {
-        tintier_ct: "#F4A7D2",
-        tintish_ct: "#E94EA5",
+      pink: {
+        tintier: "#F4A7D2",
+        tintish: "#E94EA5",
       },
-      blue_ct: {
-        normal_ct: "#003366",
-        tintish_ct: "#335C85",
-        tintiest_ct: "#CCD6E0",
-        light_ct: "#E5EAEF",
-        shady_ct: "#001A4D",
+      blue: {
+        normal: "#003366",
+        tintish: "#335C85",
+        tintiest: "#CCD6E0",
+        light: "#E5EAEF",
+        shady: "#001A4D",
       },
-      gray_ct: {
-        gray_ct: "#8293A3",
-        grayer_ct: "#D9D9D9",
-        light_ct: "#F2F2F2",
+      gray: {
+        gray: "#8293A3",
+        grayer: "#D9D9D9",
+        light: "#F2F2F2",
       },
     },
     extend: {
