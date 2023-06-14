@@ -26,3 +26,12 @@ export async function GET(
     return NextResponse.json({ error });
   }
 }
+
+export async function PATCH(request: Request) {
+  try {
+    const body = await request.json();
+    const { name, email, password, userName } = body;
+  } catch (error) {
+    
+  }
+}
