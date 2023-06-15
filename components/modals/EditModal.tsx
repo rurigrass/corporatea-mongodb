@@ -8,12 +8,14 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import Modal from "../Modal";
 import Input from "../Input";
+import useUser from "@/hooks/useUser";
 
 const EditModal = () => {
   const { data: session } = useSession();
   const editModal = useEditModal();
 
-  const [user, setUser] = useState<UserProps>();
+  const {data: user, refetch: refetchUser} = useUser(session?.user.id as string)
+  // const [user, setUser] = useState<UserProps>();
   const [profileImage, setProfileImage] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [name, setName] = useState("");
@@ -22,20 +24,20 @@ const EditModal = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/api/users/${session?.user.id}`);
-        const data = response.data;
-        setUser(data);
-      } catch (error) {
-        console.log("Error fetching users:", error);
-      }
-    };
-    if (session !== undefined) {
-      fetchData();
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`/api/users/${session?.user.id}`);
+  //       const data = response.data;
+  //       setUser(data);
+  //     } catch (error) {
+  //       console.log("Error fetching users:", error);
+  //     }
+  //   };
+  //   if (session !== undefined) {
+  //     fetchData();
+  //   }
+  // }, [session]);
 
   useEffect(() => {
     setProfileImage(user?.profileImage as string);
@@ -62,6 +64,7 @@ const EditModal = () => {
         coverImage,
       });
       //mutate user
+      refetchUser()
       toast.success("Updated User");
       editModal.onClose();
     } catch (error) {
@@ -80,7 +83,7 @@ const EditModal = () => {
         disabled={isLoading}
       />
       <Input
-        placeholder="Userbane"
+        placeholder="Username"
         onChange={(e) => setUserName(e.target.value)}
         value={userName}
         disabled={isLoading}
