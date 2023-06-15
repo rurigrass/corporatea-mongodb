@@ -4,9 +4,11 @@ import { useSession } from "next-auth/react";
 import { useMemo } from "react";
 import Button from "../Button";
 import { BiCalendar } from "react-icons/bi";
+import useEditModal from "@/hooks/useEditModal";
 
 const UserBio = ({ user }: { user: UserProps }) => {
   const { data: session } = useSession();
+  const editModal = useEditModal();
 
   const createdAt = useMemo(() => {
     if (!user?.createdAt) {
@@ -23,8 +25,8 @@ const UserBio = ({ user }: { user: UserProps }) => {
           <p className="text-md text-gray-gray">@{user?.userName}</p>
         </div>
         <div className="ml-auto">
-          {session?.user?.email === user?.email ? (
-            <Button secondary label="Edit" onClick={() => {}} />
+          {session?.user?.id === user?.id ? (
+            <Button secondary label="Edit" onClick={editModal.onOpen} />
           ) : (
             <Button secondary label="Follow" onClick={() => {}} />
           )}

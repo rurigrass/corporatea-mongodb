@@ -3,6 +3,7 @@
 import MiniHeader from "@/components/layout/MiniHeader";
 import UserBio from "@/components/users/UserBio";
 import UserHero from "@/components/users/UserHero";
+import useEditModal from "@/hooks/useEditModal";
 import { UserProps } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";

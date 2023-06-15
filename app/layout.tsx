@@ -4,6 +4,9 @@ import Provider from "@/components/Provider";
 import { Toaster } from "react-hot-toast";
 import { BsBellFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import RegisterModal from "@/components/modals/RegisterModal";
+import EditModal from "@/components/modals/EditModal";
+import LoginModal from "@/components/modals/LoginModal";
 
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -38,6 +41,9 @@ export default function RootLayout({
       <body className="dark:bg-slate dark:text-white">
         <Provider>
           <Toaster />
+          <RegisterModal />
+          <LoginModal />
+          <EditModal />
           <Header items={items} />
           <Sidebar
             items={items}
