@@ -3,10 +3,7 @@
 import MiniHeader from "@/components/layout/MiniHeader";
 import UserBio from "@/components/users/UserBio";
 import UserHero from "@/components/users/UserHero";
-import useEditModal from "@/hooks/useEditModal";
-import { UserProps } from "@/types";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import useUser from "@/hooks/useUser";
 import { ClipLoader } from "react-spinners";
 
 type ParamsProps = {
@@ -15,24 +12,7 @@ type ParamsProps = {
 
 const UserView = ({ params }: { params: ParamsProps }) => {
   const { userId } = params;
-  const [user, setUser] = useState<UserProps>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(`/api/users/${userId}`);
-        const data = response.data;
-        setUser(data);
-      } catch (error) {
-        console.log("Error fetching users:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, [userId]);
+  const {data: user, isLoading} = useUser(userId)
 
   if (isLoading || !user) {
     return (

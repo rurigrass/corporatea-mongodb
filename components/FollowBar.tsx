@@ -4,25 +4,13 @@ import Avatar from "./Avatar";
 import { SafeUser } from "../types";
 import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import useUsers from "@/hooks/useUsers";
 
 const FollowBar = () => {
-  const [users, setUsers] = useState<SafeUser[]>([]);
+  const { data: users, isLoading, error } = useUsers();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/users");
-        const data = response.data;
-        setUsers(data);
-      } catch (error) {
-        console.log("Error fetching users:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (users.length === 0) {
+  if (!users) {
     return null;
   }
 
@@ -38,9 +26,7 @@ const FollowBar = () => {
               </Suspense>
               <div className="flex flex-col">
                 <p className="text-white font-semibold text-sm">{user.name}</p>
-                <p className=" text-gray-grayer_ct text-sm">
-                  @{user.userName}
-                </p>
+                <p className=" text-gray-grayer_ct text-sm">@{user.userName}</p>
               </div>
             </div>
           ))}

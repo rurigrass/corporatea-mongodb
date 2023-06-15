@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
-import getUser from "@/app/actions/getUser";
 
 type ParamProps = {
   userId?: string;
@@ -13,7 +12,11 @@ export async function GET(
   const { userId } = params;
   try {
     if (userId !== undefined) {
-      const user = await getUser(userId);
+      const user = await prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+      });
       return NextResponse.json(user, { status: 200 });
     } else {
       return NextResponse.json({ error: "User ID is undefined" });

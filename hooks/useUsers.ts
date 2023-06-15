@@ -1,17 +1,14 @@
-import useSWR from 'swr';
-
-import fetcher from '@/libs/fetcher';
+import { SafeUser } from "@/types";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const useUsers = () => {
-  const { data, error, isLoading, mutate } = useSWR('/api/users', fetcher);
-
-  return {
-    data,
-    error,
-    isLoading,
-    mutate
-  }
+  return useQuery(["users"], {
+    queryFn: async () => {
+      const { data } = await axios.get("/api/users");
+      return data as SafeUser[];
+    },
+  });
 };
 
 export default useUsers;
-
