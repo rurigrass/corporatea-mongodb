@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
         // Add logic here to look up the user from the credentials supplied
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email as string
+            email: credentials.email as string,
           },
         });
         // check if user exists and has password exists valid
@@ -46,6 +46,23 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, account, user }) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (account) {
+        //DONT THINK THIS ACCESS TOKEN IS IMPORTANT
+        // token.accessToken = account.access_token
+        token.id = user.id
+      }
+      return token
+    },
+   async session({ session, token }) {
+    // Send properties to the client, like an access_token and user id from a provider.
+    // session.accessToken = token.accessToken
+    session.user.id = token.id as string
+    return session
+  }
+  },
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",

@@ -11,9 +11,6 @@ export async function GET(
   { params }: { params: ParamProps }
 ) {
   const { userId } = params;
-  if (request.method !== "GET") {
-    console.log("POOP");
-  }
   try {
     if (userId !== undefined) {
       const user = await getUser(userId);
@@ -22,16 +19,34 @@ export async function GET(
       return NextResponse.json({ error: "User ID is undefined" });
     }
   } catch (error) {
-    console.log("Error fetching users:", error);
+    console.log("Error fetching unique user:", error);
     return NextResponse.json({ error });
   }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(
+  request: Request,
+  { params }: { params: ParamProps }
+) {
   try {
+    const { userId } = params;
     const body = await request.json();
-    const { name, email, password, userName } = body;
+    const { name, userName, bio, profileImage, coverImage } = body;
+    const updateUser = await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        name,
+        userName,
+        bio,
+        profileImage,
+        coverImage,
+      },
+    });
+    return NextResponse.json(updateUser, { status: 200 });
   } catch (error) {
-    
+    console.log("Error updating user:", error);
+    return NextResponse.json({ error });
   }
 }

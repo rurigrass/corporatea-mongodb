@@ -1,7 +1,8 @@
 // import Modal from "@/components/Modal";
 import RegisterModal from "@/components/modals/RegisterModal";
-import Banner from "@/components/Banner";
+import EditModal from "@/components/modals/EditModal";
 import LoginModal from "@/components/modals/LoginModal";
+import Banner from "@/components/Banner";
 import FollowBar from "@/components/FollowBar";
 import { SafeUser } from "../types"; // Import User type from your types.ts file
 import { useEffect, useState } from "react";
@@ -23,13 +24,7 @@ const Home = () => {
     <>
       <RegisterModal />
       <LoginModal />
-      {/* <Modal
-        isOpen={true}
-        onClose={() => console.log("close")}
-        onSubmit={() => console.log("submit")}
-        actionLabel="Submit"
-        title="yoyo "
-      /> */}
+      <EditModal/>
       <div className="">
         <Banner />
         Hello world
