@@ -40,9 +40,8 @@ const EditModal = () => {
   //   }
   // }, [session]);
 
-  console.log(profileImage);
-  
-  
+  // console.log(profileImage);
+  // console.log(name);
 
   useEffect(() => {
     setProfileImage(user?.profileImage as string);
@@ -71,10 +70,10 @@ const EditModal = () => {
       //mutate user
       refetchUser()
       toast.success("Updated User");
-      editModal.onClose();
     } catch (error) {
       toast.error("something went wrong");
     } finally {
+      editModal.onClose();
       setIsLoading(false);
     }
   }, [name, userName, bio, profileImage, coverImage]);

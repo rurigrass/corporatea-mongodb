@@ -26,11 +26,15 @@ const ImageUpload = ({
   );
 
   const handleDrop = useCallback(
-    (files: any) => {
-      const file = files[0];      
+    (files: File[]) => {
+      const file = files[0];   
+      console.log("FILE ", file);
+         
       const reader = new FileReader();
       reader.onload = (event: any) => {
+        console.log("event", event);
         setBase64(event.target.result);
+        handleChange(event.target.result)
       };
       reader.readAsDataURL(file);
     },

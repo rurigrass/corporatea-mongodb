@@ -58,6 +58,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
     >
       <Image
       fill
+      sizes=""
       style={{
         objectFit: 'cover',
         borderRadius: '100%'
