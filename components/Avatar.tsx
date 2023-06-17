@@ -5,6 +5,7 @@ import prisma from "@/libs/prismadb";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { UserProps } from "@/types";
+import useUser from "@/hooks/useUser";
 
 interface AvatarProps {
   userId: string;
@@ -15,20 +16,11 @@ interface AvatarProps {
 const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   const router = useRouter();
 
-  const [user, setUser] = useState<UserProps>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/api/users/${userId}`);
-        const data = response.data;
-        setUser(data);
-      } catch (error) {
-        console.log("Error fetching users:", error);
-      }
-    };
-    fetchData();
-  }, [userId]);
+  console.log("IDDDDD: ", userId);
+  
+  const { data: user } = useUser(userId);
+  console.log(user);
+  
 
   const onClick = useCallback(
     (event: any) => {
@@ -42,7 +34,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   if (user === undefined) {
     return null;
   }
-  
+
   return (
     <div
       className={`
@@ -57,15 +49,15 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
       `}
     >
       <Image
-      fill
-      sizes=""
-      style={{
-        objectFit: 'cover',
-        borderRadius: '100%'
-      }}
-      alt="Avatar"
-      onClick={onClick}
-      src={user?.profileImage || '/images/placeholder.png'}
+        fill
+        sizes=""
+        style={{
+          objectFit: "cover",
+          borderRadius: "100%",
+        }}
+        alt="Avatar"
+        onClick={onClick}
+        src={user?.profileImage || "/images/placeholder.png"}
       />
     </div>
   );

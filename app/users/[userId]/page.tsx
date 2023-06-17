@@ -11,8 +11,10 @@ type ParamsProps = {
 };
 
 const UserView = ({ params }: { params: ParamsProps }) => {
-  const { userId } = params;
+  const { userId } = params;  
   const {data: user, isLoading} = useUser(userId)
+  
+  
 
   if (isLoading || !user) {
     return (

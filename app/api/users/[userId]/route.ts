@@ -17,6 +17,8 @@ export async function GET(
           id: userId,
         },
       });
+      // console.log("USER: ", user);
+      
       return NextResponse.json(user, { status: 200 });
     } else {
       return NextResponse.json({ error: "User ID is undefined" });

@@ -2,9 +2,6 @@ import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  if (request.method !== "GET") {
-    console.log("POOP");
-  }
   try {
     const users = await prisma.user.findMany({
       select: {
